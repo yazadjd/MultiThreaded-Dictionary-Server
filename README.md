@@ -2,6 +2,9 @@
 
 The aim of this project is to use a Client - Server Architecture to design and implement a Multi-Threaded Server that allows concurrent Clients to Search the meaning(s) of a word, Add a new word along with its meaning(s) and Delete an existing word from a dictionary along with its associated meaning(s). The lowest level of abstraction used for concurrency is Threads and for network communication is Sockets and all components are implemented using Java.
 
+
+## Running
+
 A sample command to start the server is:
 
 java –jar DictionaryServer.jar \<port> \<dictionary-file>
@@ -33,4 +36,6 @@ Clients can Query/Search for a particular word’s meaning from the dictionary, 
 
 This project has been implemented using the Thread per Connection Architecture as it is very convenient and straightforward for the server to manage threads this way and also it guarantees that the main thread in Server only blocks on the accept() call and wont be blocked by other situations. Using Thread per request can suffocate performance with every client having large number of requests and worker pool architecture only has a fixed number of threads we can use from the pool. Hence considering all the above factors, Thread per Connection architecture has been implemented.
 
-Disadvantages of this architecture include that if there are multiple threads accessing the same resource (Dictionary) then it could lead to performance issues. Also, if hundreds of clients try to connect to the server at the same time, then only the first few will be connected and the rest will have to wait for a connection until the previous clients have been disconnected. Since many Client Threads are to access the same resource, to prevent inconsistency with the Dictionary data, synchronized block is used on the Dictionary object when the Server accesses the dictionary to perform necessary operations. This will give exclusive access to a thread on the Dictionary object for the span of the performed operation to prevent inconsistency in the Dictionary data.
+Disadvantages of this architecture include that if there are multiple threads accessing the same resource (Dictionary) then it could lead to performance issues. Also, if hundreds of clients try to connect to the server at the same time, then only the first few will be connected and the rest will have to wait for a connection until the previous clients have been disconnected.
+
+Since many Client Threads are to access the same resource, to prevent inconsistency with the Dictionary data, synchronized block is used on the Dictionary object when the Server accesses the dictionary to perform necessary operations. This will give exclusive access to a thread on the Dictionary object for the span of the performed operation to prevent inconsistency in the Dictionary data.

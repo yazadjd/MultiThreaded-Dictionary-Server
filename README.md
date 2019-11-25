@@ -7,7 +7,7 @@ The aim of this project is to use a Client - Server Architecture to design and i
 
 A sample command to start the server is:
 
-	java –jar DictionaryServer.jar \<port> \<dictionary-file>
+	java –jar DictionaryServer.jar <port> <dictionary-file>
 
 Where \<port> is the port number where the server will listen for incoming client connections and \<dictionary-file> is the path to the file containing the initial dictionary data.
 
@@ -16,7 +16,7 @@ When the client is launched, it creates a TCP socket bound to the server address
 
 A sample command to start the client is:
 
-	java –jar DictionaryClient.jar \<server-address> \<server-port>
+	java –jar DictionaryClient.jar <server-address> <server-port>
 
 The jar files are located in /out/artifacts folder.
 
